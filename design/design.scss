@@ -1,0 +1,141 @@
+@import "./common/variables";
+@import "./common/mixin";
+
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Great+Vibes&family=Lexend+Deca:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigation Styles */
+.navbar {
+  display: flex;
+  background-color: $white;
+  box-shadow: 0 -4px 17px $primary-color;
+  margin-bottom: 6px;
+  &__lists {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  &__list {
+  }
+  &__link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 20px 20px;
+    font-size: 18px;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.3s linear;
+    &:hover {
+      color: darken($secondary-color, 30%);
+    }
+  }
+}
+
+/* Banner Styles */
+.banner {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  $size-left: 35%;
+  $min-height: 600px;
+  line-height: 30px;
+  &__left {
+    width: $size-left;
+    height: $min-height;
+    background-color: $secondary-color;
+    position: relative;
+    transition: width 0.5s ease;
+  }
+  &__right {
+    width: 100% - $size-left;
+    height: $min-height;
+    background-color: $primary-color;
+    color: $white;
+    position: relative;
+    transition: width 0.5s ease;
+  }
+  &__profile {
+    position: absolute;
+    left: 100%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 500px;
+    z-index: 1;
+    filter: drop-shadow(-19px 4px 13px #0b0421);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  &__content {
+    position: absolute;
+    left: 16%;
+    top: 20%;
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  &__title {
+    font-family: "Montserrat", sans-serif;
+    line-height: 40px;
+    margin-bottom: 20px;
+    &--l {
+      font-size: 40px;
+    }
+    &--m {
+      font-size: 30px;
+    }
+  }
+  &__description {
+    font-size: 30px;
+    font-family: "Caveat", cursive;
+    letter-spacing: 5px;
+  }
+}
+
+/* Link Animation */
+.link {
+  text-decoration: none;
+  color: $white;
+  transition: color 0.3s linear;
+  margin-top: 30px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  font-size: 20px;
+  &:hover {
+    color: $secondary-color;
+    cursor: pointer;
+  }
+}
+
+/* Banner Content Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply Animation to Banner Content */
+.banner__content {
+  animation: fadeIn 1s ease forwards;
+}
+
+.banner__title,
+.banner__description {
+  opacity: 0;
+}
+
+.banner__title {
+  animation: fadeIn 1s ease 0.5s forwards;
+}
+
+.banner__description {
+  animation: fadeIn 1s ease 1s forwards;
+}
