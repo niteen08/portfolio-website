@@ -1,5 +1,17 @@
-$primary-color: #00796b; // Sample primary color
+@import "./common/variables";
+@import "./common/mixin";
 
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Great+Vibes&family=Lexend+Deca:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 /* Navigation Styles */
 .navbar {
   display: flex;
@@ -107,7 +119,32 @@ $primary-color: #00796b; // Sample primary color
   }
 }
 
-/* Card Styles */
+/* Banner Content Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section {
+  padding: 50px 50px;
+}
+
+.title {
+  font-size: 32px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  &__end {
+    color: $secondary-color;
+  }
+}
+
 .card {
   padding: 20px;
   background-color: $primary-color;
@@ -206,4 +243,104 @@ $primary-color: #00796b; // Sample primary color
   }
 
   animation: cardAnimation 1s 3;
+}
+@property --progress-value {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@keyframes html-progress {
+  to {
+    --progress-value: 95;
+  }
+}
+
+@keyframes css-progress {
+  to {
+    --progress-value: 99;
+  }
+}
+
+@keyframes js-progress {
+  to {
+    --progress-value: 85;
+  }
+}
+
+.progress-bar-container {
+  width: 25%;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    color: $primary-color;
+  }
+}
+.progress-bar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-bar::before {
+  counter-reset: percentage var(--progress-value);
+  content: counter(percentage) "%";
+}
+
+.html {
+  background: radial-gradient(closest-side, white 79%, transparent 80% 100%),
+    conic-gradient($primary-color calc(var(--progress-value) * 1%), $white 0);
+  animation: html-progress 2s 1 forwards;
+}
+
+.html::before {
+  animation: html-progress 2s 1 forwards;
+}
+
+.css {
+  background: radial-gradient(
+      closest-side,
+      white 79%,
+      transparent 80% 100%,
+      white 0
+    ),
+    conic-gradient($primary-color calc(var(--progress-value) * 1%), $white 0);
+  animation: css-progress 2s 1 forwards;
+}
+
+.css::before {
+  animation: css-progress 2s 1 forwards;
+}
+
+.js {
+  background: radial-gradient(
+      closest-side,
+      white 79%,
+      transparent 80% 100%,
+      white 0
+    ),
+    conic-gradient($primary-color calc(var(--progress-value) * 1%), $white 0);
+  animation: js-progress 2s 1 forwards;
+}
+
+.js::before {
+  animation: js-progress 2s 1 forwards;
+}
+
+progress {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.section:nth-child(even) {
+  background-color: $secondary-color;
 }
