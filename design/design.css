@@ -383,4 +383,58 @@ progress {
 }
 .portfolio__link:hover {
   color: #000;
+}
+
+.contact {
+  display: flex;
+  background-color: red;
+}
+.contact__sec {
+  width: 50%;
+}
+.contact__sec:nth-of-type(1) {
+  background-image: url("../images/men.jpeg");
+  background-size: cover;
+  filter: brightness(0.6);
+}
+.contact__sec:nth-of-type(2) {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+.contact form {
+  padding: 20px;
+  font-family: "Montserrat", sans-serif;
+}
+.contact .form-group {
+  margin-bottom: 20px;
+}
+.contact .form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+.contact .form-group input,
+.contact .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.contact .form-group textarea {
+  height: 120px;
+}
+.contact button[type=submit] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+.contact button[type=submit]:hover {
+  background-color: #0056b3;
 }/*# sourceMappingURL=design.css.map */
